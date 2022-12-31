@@ -23,13 +23,15 @@
 
 ## Usage
 
-For Linux and macOS
+Take a look at the `config.py` file
+
+Run for Linux and macOS
 
 ```
 python3 main.py
 ```
 
-For Windows
+Run for Windows
 
 ```
 python main.py
