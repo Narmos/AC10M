@@ -23,7 +23,7 @@
 
 ## Usage
 
-Take a look at the `config.py` file
+Before run the script, take a look at the `config.py` file
 
 Run for Linux and macOS
 
