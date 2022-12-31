@@ -37,7 +37,7 @@ python main.py
 
 Press `ESC` to exit the program
 
-Press `p` to set corner points from frame source
+Press `p` to calibrate the target (set corner points from frame source)
 
 ## Credits
 
