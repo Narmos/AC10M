@@ -15,7 +15,6 @@ def get_frame():
     else:
         success, frame = config.source.read()
     if success:
-        config.source.release()
         return frame
     else:
         print("Erreur de lecture de la source...")
@@ -25,6 +24,7 @@ def save_points():
     with open('points','wb') as file:
         pickle.dump(points, file)
         print("Les points ont été enregistrés dans le fichier \"points\"")
+        points.clear()
 
 # Recuperer les points d'un clique gauche de souris
 def get_mouse_points(event, x, y, flags, params):

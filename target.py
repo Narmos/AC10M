@@ -2,11 +2,27 @@ import config
 import cornerspicker
 import cv2
 import numpy as np
+import os
+import pickle
 
 # Creation des points de reference pour calibrer la cible
 def set_cornerpoints():
     cornerspicker.set_points()
     config.script_restart()
+
+def set_cornerpoints_gui():
+    cornerspicker.set_points()
+
+# Recuperation des points de reference
+def get_cornerpoints():
+    if config.enable_test_cornerpoints:
+        corner_points = config.test_cornerpoints
+    elif os.path.exists('points'):
+        with open('points', 'rb') as file:
+            corner_points = pickle.load(file)
+    else:
+        corner_points = []
+    return corner_points
 
 # Affichage des points de reference sur l'image
 def show_cornerpoints(frame, cornerpoints: list):
