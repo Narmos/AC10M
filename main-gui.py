@@ -2,6 +2,7 @@ import config
 import cv2
 import PIL.Image, PIL.ImageTk
 import target
+import time
 from tkinter import *
 from tkinter import messagebox
 
@@ -23,6 +24,19 @@ def create_menu_bar(window):
     # Add menu bar to the window
     window.config(menu=menu_bar)
 
+def convert_frame_to_image(frame):
+    # Capture the latest frame and transform to image
+    image = PIL.Image.fromarray(frame)
+    # Convert captured image to photoimage
+    image = PIL.ImageTk.PhotoImage(image=image)
+    return image
+
+def set_image_to_label(image, label):
+    # Displaying photoimage in the label
+    label.photo_image = image
+    # Configure image in the label
+    label.configure(image=image)
+
 def read_frame():
     # Recuperation des points de reference
     corner_points = target.get_cornerpoints()
@@ -33,22 +47,27 @@ def read_frame():
 
     if success:
         if not corner_points:
-            # On récupère l'image originale
-            target_frame = frame
+            # On récupère l'image originale de la webcam
+            label_image = convert_frame_to_image(frame)
+            set_image_to_label(label_image, video_label)
             main_window.title("ACM10 - Webcam")
         else:
             # On récupère l'image traitée
             target_frame = target.processing(frame, corner_points)
-            main_window.title("ACM10 - Cible temp réel")
+            config.frames.append(target_frame) # On stock l'image dans une liste pour le délai
+            target_frame_delay = config.frames[0]
 
-        # Capture the latest frame and transform to image
-        captured_image = PIL.Image.fromarray(target_frame)
-        # Convert captured image to photoimage
-        photo_image = PIL.ImageTk.PhotoImage(image=captured_image)
-        # Displaying photoimage in the label
-        video_label.photo_image = photo_image
-        # Configure image in the label
-        video_label.configure(image=photo_image)
+            if config.enable_video_delay:
+                if time.time() - config.start_time > config.video_delay:
+                    label_image = convert_frame_to_image(target_frame_delay)
+                    set_image_to_label(label_image, video_label)
+                    main_window.title("ACM10 - Cible avec délai")
+                    del config.frames[0]
+            else:
+                label_image = convert_frame_to_image(target_frame)
+                set_image_to_label(label_image, video_label)
+                main_window.title("ACM10 - Cible temps réel")
+
         # Repeat the same process after every 10ms
         video_label.after(10, read_frame)
     else:
