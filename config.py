@@ -38,8 +38,10 @@ def script_restart():
 # Parametres modifiables #
 ##########################
 
-# Couleur de fond de la fenêtre en mode GUI
-background_color = "#333333"
+# Couleur de fond de la fenetre
+gui_background_color = "#333333"
+# Icone dans la barre de titre de la fenetre
+gui_icon = f"{script_path}/target-icon.ico"
 
 # Points de reference (haut gauche, haut droite, bas gauche, bas droite) pour la transformation geometrique de la cible
 enable_test_cornerpoints = False
