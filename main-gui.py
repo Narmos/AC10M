@@ -82,6 +82,7 @@ main_window = Tk()
 main_window.minsize(config.target_width, config.target_height)
 main_window.title("ACM10")
 main_window.configure(bg=config.background_color)
+main_window.iconbitmap(f"{config.script_path}/target-icon.ico")
 # Bind the window with Escape keyboard to quit app whenever pressed
 main_window.bind('<Escape>', lambda e: main_window.quit())
 
