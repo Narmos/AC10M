@@ -38,6 +38,9 @@ def script_restart():
 # Parametres modifiables #
 ##########################
 
+# Couleur de fond de la fenêtre en mode GUI
+background_color = "#333333"
+
 # Points de reference (haut gauche, haut droite, bas gauche, bas droite) pour la transformation geometrique de la cible
 enable_test_cornerpoints = False
 test_cornerpoints = [[374,61], [1000,33], [242,692], [1154,694]]
