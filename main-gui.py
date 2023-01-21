@@ -68,6 +68,10 @@ def read_frame():
                 set_image_to_label(label_image, video_label)
                 main_window.title("ACM10 - Cible temps réel")
 
+        # Resize the window with the size of label (video)
+        main_window.update()
+        main_window.minsize(video_label.winfo_width(), video_label.winfo_height())
+
         # Repeat the same process after every 10ms
         video_label.after(10, read_frame)
     else:
@@ -82,7 +86,8 @@ main_window = Tk()
 main_window.minsize(config.target_width, config.target_height)
 main_window.title("ACM10")
 main_window.configure(bg=config.gui_background_color)
-main_window.iconbitmap(config.gui_icon)
+icon_photo = PhotoImage(file=config.gui_icon)
+main_window.wm_iconphoto(True, icon_photo)
 # Bind the window with Escape keyboard to quit app whenever pressed
 main_window.bind('<Escape>', lambda e: main_window.quit())
 
@@ -90,7 +95,7 @@ main_window.bind('<Escape>', lambda e: main_window.quit())
 create_menu_bar(main_window)
 
 # Create a label and display it on window
-video_label = Label(main_window)
+video_label = Label(main_window, borderwidth=0)
 video_label.pack()
 
 # Read the video
