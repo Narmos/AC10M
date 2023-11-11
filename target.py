@@ -24,6 +24,12 @@ def get_cornerpoints():
         corner_points = []
     return corner_points
 
+# Suppression des points de reference
+def delete_cornerpoints():
+    if os.path.exists('points'):
+        os.remove('points')
+        print("Le fichier \"points\" a été supprimé")
+
 # Affichage des points de reference sur l'image
 def show_cornerpoints(frame, cornerpoints: list):
     for x in range(4):

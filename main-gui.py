@@ -12,6 +12,7 @@ def create_menu_bar(window):
     # File menu
     menu_file = Menu(menu_bar, tearoff=0)
     menu_file.add_command(label="Calibrate", underline=0, accelerator="CTRL+P", command=target.set_cornerpoints_gui)
+    menu_file.add_command(label="Reset", underline=0, accelerator="CTRL+R", command=target.delete_cornerpoints)
     menu_file.add_separator()
     menu_file.add_command(label="Exit", underline=1, command=window.quit)
     menu_bar.add_cascade(label="File", underline=0, menu=menu_file)
@@ -21,6 +22,7 @@ def create_menu_bar(window):
     menu_bar.add_cascade(label="Help", underline=0, menu=menu_help)
     # Binding controls
     window.bind_all("<Control-p>", lambda x: target.set_cornerpoints_gui())
+    window.bind_all("<Control-r>", lambda x: target.delete_cornerpoints())
     # Add menu bar to the window
     window.config(menu=menu_bar)
 
