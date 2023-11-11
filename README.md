@@ -3,22 +3,22 @@
 
 # AC10M
 
-:white_check_mark: Tested on Windows 10/11, macOS 13 Ventura and Ubuntu 22.04 LTS
+:white_check_mark: Tested on Windows 10/11, macOS 13/14 and Ubuntu 22.04 LTS
 
 ## Prerequisite
 
 1. Install [Python](https://www.python.org/downloads/)
 
-    For Ubuntu, Python 3 is already installed by default, however, you must install the Python package manager `pip`
+    For Ubuntu, Python 3 is already installed by default, however, you must install the Python package manager `pip` and the `Tkinter` library which are included by default on Windows and macOS
 
     ```
-    sudo apt install python3-pip
+    sudo apt install python3-pip python3-tk
     ```
 
-2. Install Python package [opencv-contrib-python](https://pypi.org/project/opencv-contrib-python/)
+2. Install Python packages [opencv-contrib-python](https://pypi.org/project/opencv-contrib-python/) and [Pillow](https://pypi.org/project/Pillow/)
 
     ```
-    pip3 install opencv-contrib-python
+    pip3 install --upgrade opencv-contrib-python Pillow
     ```
 
 ## Usage
@@ -28,18 +28,14 @@ Before run the script, take a look at the `config.py` file
 Run for Linux and macOS
 
 ```
-python3 main.py
+python3 main-gui.py
 ```
 
 Run for Windows
 
 ```
-python main.py
+python main-gui.py
 ```
-
-Press `ESC` to exit the program
-
-Press `p` to calibrate the target (set corner points from frame source)
 
 ## Credits
 
