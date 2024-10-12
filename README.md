@@ -3,19 +3,26 @@
 
 # AC10M
 
-:white_check_mark: Tested on Windows 10/11, macOS 13/14 and Ubuntu 22.04 LTS
+:white_check_mark: Tested on Windows 10/11, macOS 13/14 and Ubuntu 22.04 LTS/24.04 LTS/24.10
 
 ## Prerequisite
 
 1. Install [Python](https://www.python.org/downloads/)
 
-    For Ubuntu, Python 3 is already installed by default, however, you must install the Python package manager `pip` and the `Tkinter` library which are included by default on Windows and macOS
+    For Ubuntu, Python 3 is already installed by default, however, you must install the Python package manager `pip`, the `venv` and the `Tkinter` libraries which are included by default on Windows and macOS
 
     ```
-    sudo apt install python3-pip python3-tk
+    sudo apt install python3-{pip,tk,venv)
+    ```
+2. Set up a Python virtual environment
+
+    In the AC10M script folder, create a virtual environment and activate it
+    ```
+    python3 -m venv env
+    source env/bin/activate
     ```
 
-2. Install Python packages [opencv-contrib-python](https://pypi.org/project/opencv-contrib-python/) and [Pillow](https://pypi.org/project/Pillow/)
+3. Install Python packages [opencv-contrib-python](https://pypi.org/project/opencv-contrib-python/) and [Pillow](https://pypi.org/project/Pillow/)
 
     ```
     pip3 install --upgrade opencv-contrib-python Pillow
